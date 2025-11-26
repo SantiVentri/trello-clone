@@ -17,6 +17,14 @@ export default function Nav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [data, setData] = useLocalStorage("trello-board", initialData);
 
+    const handleCloseBoard = () => {
+        if (window.confirm("¿Estás seguro? Esto borrará todo y restaurará el tablero inicial.")) {
+            setData(initialData);
+            setIsMenuOpen(false);
+            window.location.reload();
+        }
+    }
+
     return (
         <header className={styles.nav}>
             <div className={styles.titles}>
@@ -40,7 +48,7 @@ export default function Nav() {
                         <Minus color="black" size={16} />
                         Change background
                     </button>
-                    <button>
+                    <button onClick={handleCloseBoard}>
                         <Minus color="black" size={16} />
                         Close board
                     </button>
