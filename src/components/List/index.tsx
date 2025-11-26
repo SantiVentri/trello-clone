@@ -8,11 +8,19 @@ import { List, Id } from "@/types"
 import ListCard from "../Card";
 import DeleteListButton from "./DeleteListButton/delete-list-button";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void }) {
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(list.title === "New List");
     const [title, setTitle] = useState(list.title);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (isEditing && inputRef.current) {
+            inputRef.current.focus();
+            inputRef.current.select();
+        }
+    }, [isEditing]);
 
     const handleTitleBlur = () => {
         setIsEditing(false);
@@ -37,16 +45,16 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
                 <div className={styles.titles}>
                     {isEditing ? (
                         <input
+                            ref={inputRef}
                             className={styles.listTitleInput}
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             onBlur={handleTitleBlur}
                             onKeyDown={handleKeyDown}
-                            autoFocus
                         />
                     ) : (
-                        <h3 
-                            className={styles.listTitle} 
+                        <h3
+                            className={styles.listTitle}
                             onClick={() => setIsEditing(true)}
                         >
                             {list.title}

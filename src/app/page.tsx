@@ -35,7 +35,7 @@ export default function Home() {
   }
 
   const onUpdateListTitle = (listId: Id, newTitle: string) => {
-    const newLists = data.lists.map(list => 
+    const newLists = data.lists.map(list =>
       list.id === listId ? { ...list, title: newTitle } : list
     );
     setData({ ...data, lists: newLists });
@@ -62,10 +62,10 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Board 
-          data={data} 
-          onToggleCard={onToggleCard} 
-          onDeleteList={onDeleteList} 
+        <Board
+          data={data}
+          onToggleCard={onToggleCard}
+          onDeleteList={onDeleteList}
           onAddList={onAddList}
           onUpdateListTitle={onUpdateListTitle}
         />

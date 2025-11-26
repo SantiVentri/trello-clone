@@ -21,11 +21,11 @@ export default function Board({ data, onToggleCard, onDeleteList, onAddList, onU
     return (
         <div className={styles.container}>
             {data.lists.map((list) => (
-                <BoardList 
-                    key={list.id} 
-                    list={list} 
-                    onToggleCard={onToggleCard} 
-                    onDeleteList={onDeleteList} 
+                <BoardList
+                    key={list.id}
+                    list={list}
+                    onToggleCard={onToggleCard}
+                    onDeleteList={onDeleteList}
                     onUpdateListTitle={onUpdateListTitle}
                 />
             ))}
