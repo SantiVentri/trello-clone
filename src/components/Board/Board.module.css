@@ -4,6 +4,7 @@
     padding: 25px;
     height: 100%;
     width: 100%;
+    overflow-x: auto;
     gap: 20px;
 }
 
@@ -14,6 +15,7 @@
     border: none;
     border-radius: 12px;
     padding: 12px;
+    min-width: 300px;
     width: 300px;
     cursor: pointer;
     color: #333;
