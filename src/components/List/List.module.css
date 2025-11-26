@@ -19,3 +19,24 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.addCardButton {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    gap: 5px;
+}
+
+@media (hover: hover) {
+    .addCardButton:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+    }
+}

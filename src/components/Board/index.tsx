@@ -6,6 +6,7 @@ import BoardList from "../List";
 
 // Types
 import { BoardData, Id } from "@/types";
+import { Plus } from "lucide-react";
 
 // Props interface
 interface BoardProps {
@@ -20,6 +21,10 @@ export default function Board({ data, onToggleCard, onDeleteList }: BoardProps) 
             {data.lists.map((list) => (
                 <BoardList key={list.id} list={list} onToggleCard={onToggleCard} onDeleteList={onDeleteList} />
             ))}
+            <button className={styles.addListButton}>
+                <Plus size={16} />
+                <p>Add another list</p>
+            </button>
         </div>
     );
 }

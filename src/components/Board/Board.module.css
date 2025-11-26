@@ -1,7 +1,30 @@
 .container {
     display: flex;
+    align-items: flex-start;
     padding: 25px;
     height: 100%;
     width: 100%;
     gap: 20px;
+}
+
+.addListButton {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    width: 300px;
+    cursor: pointer;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    gap: 5px;
+}
+
+@media (hover: hover) {
+    .addListButton:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
 }
