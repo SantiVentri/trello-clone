@@ -1,5 +1,11 @@
-import type { Metadata } from "next";
+// Styles
 import "./globals.css";
+
+// Types
+import type { Metadata } from "next";
+
+// Components
+import Nav from "@/components/ui/Nav";
 
 export const metadata: Metadata = {
   title: "Trello Clone | By Santino Ventrice",
@@ -14,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <Nav />
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

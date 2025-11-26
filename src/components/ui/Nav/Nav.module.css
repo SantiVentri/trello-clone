@@ -1,0 +1,36 @@
+.nav {
+  height: 48px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.nav h1 {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav .github {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+  .nav .github {
+    display: flex;
+  }
+  .nav .link {
+    display: none;
+  }
+}
