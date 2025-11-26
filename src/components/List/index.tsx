@@ -10,7 +10,7 @@ import DeleteListButton from "./DeleteListButton/delete-list-button";
 import { Plus } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void }) {
+export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle, onUpdateCardTitle }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void }) {
     const [isEditing, setIsEditing] = useState(list.title === "New List");
     const [title, setTitle] = useState(list.title);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -64,7 +64,7 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
                 </div>
                 <div className={styles.cards}>
                     {list.cards.map((card) => (
-                        <ListCard key={card.id} card={card} onToggleCard={onToggleCard} />
+                        <ListCard key={card.id} card={card} onToggleCard={onToggleCard} onUpdateCardTitle={onUpdateCardTitle} />
                     ))}
                 </div>
                 <button className={styles.addCardButton}>
