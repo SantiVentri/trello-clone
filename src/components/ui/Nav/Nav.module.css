@@ -118,3 +118,31 @@
         background-color: rgba(0, 0, 0, 0.1);
     }
 }
+
+.boardTitleInput {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+    padding: 0 8px;
+    height: 32px;
+    outline: none;
+    font-family: inherit;
+}
+
+.boardTitle {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 8px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.boardTitle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
