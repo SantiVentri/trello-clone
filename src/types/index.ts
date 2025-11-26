@@ -14,5 +14,6 @@ export type List = {
 };
 
 export type BoardData = {
+  title: string;
   lists: List[];
 };
