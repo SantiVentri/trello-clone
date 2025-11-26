@@ -1,6 +1,9 @@
 // Styles
 import styles from "./Board.module.css";
 
+// Components
+import BoardList from "../List";
+
 // Types
 import { BoardData } from "@/types";
 
@@ -13,16 +16,7 @@ export default function Board({ data }: BoardProps) {
     return (
         <div className={styles.container}>
             {data.lists.map((list) => (
-                <div key={list.id} className={styles.list}>
-                    <h3 className={styles.listTitle}>{list.title}</h3>
-                    <div className={styles.cards}>
-                        {list.cards.map((card) => (
-                            <div key={card.id} className={styles.card}>
-                                {card.title}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <BoardList key={list.id} list={list} />
             ))}
         </div>
     );
