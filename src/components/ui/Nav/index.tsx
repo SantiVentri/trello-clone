@@ -7,11 +7,22 @@ import styles from "./Nav.module.css";
 // Components
 import { useState } from "react";
 
+// Hooks
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+
+// Data
+import { initialData } from "@/data/initialData";
+
 export default function Nav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [data, setData] = useLocalStorage("trello-board", initialData);
+
     return (
         <header className={styles.nav}>
-            <h1>My Trello</h1>
+            <div className={styles.titles}>
+                <h1>Trello Clone</h1>
+                <span>{data.title}</span>
+            </div>
             <nav>
                 <button className={styles.settings} onClick={() => setIsMenuOpen(true)}>
                     <Ellipsis color="white" />

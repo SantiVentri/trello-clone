@@ -12,6 +12,12 @@
     flex-shrink: 0;
 }
 
+.nav .titles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .nav h1 {
   font-weight: 700;
   font-size: 1.1rem;
