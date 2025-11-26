@@ -5,18 +5,19 @@ import styles from "./Board.module.css";
 import BoardList from "../List";
 
 // Types
-import { BoardData } from "@/types";
+import { BoardData, Id } from "@/types";
 
 // Props interface
 interface BoardProps {
     data: BoardData;
+    onToggleCard: (cardId: Id) => void;
 }
 
-export default function Board({ data }: BoardProps) {
+export default function Board({ data, onToggleCard }: BoardProps) {
     return (
         <div className={styles.container}>
             {data.lists.map((list) => (
-                <BoardList key={list.id} list={list} />
+                <BoardList key={list.id} list={list} onToggleCard={onToggleCard} />
             ))}
         </div>
     );

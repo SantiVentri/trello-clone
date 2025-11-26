@@ -1,0 +1,51 @@
+.card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.card input[type="checkbox"] {
+    width: 0;
+    height: 16px;
+    overflow: hidden;
+    opacity: 0;
+    cursor: pointer;
+    transform: translateY(6px);
+    accent-color: green;
+    pointer-events: none;
+    transition:
+        width 0.25s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.card input[type="checkbox"]:checked {
+    width: 16px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+@media (hover: hover) {
+    .card:hover {
+        outline: 3px solid #2099df;
+        outline-offset: -1px;
+    }
+
+    .card:hover input[type="checkbox"]:not(:checked) {
+        width: 16px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+/* Tachado cuando está checkeado */
+.card input[type="checkbox"]:checked + .cardTitle {
+    text-decoration: line-through;
+    color: #a0a0a0;
+}

@@ -5,6 +5,7 @@ export type Id = string | number;
 export type Card = {
   id: Id;
   title: string;
+  checked: boolean;
 };
 
 export type List = {
