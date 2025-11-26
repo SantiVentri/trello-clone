@@ -1,7 +1,22 @@
-html,
+:root {
+  --board-bg: #0079bf;       /* Azul Trello clásico */
+  --list-bg: #f1f2f4;        /* Gris de las listas */
+  --card-bg: #ffffff;        /* Blanco de las tarjetas */
+  --text-primary: #172b4d;   /* Color de texto oscuro */
+  --text-secondary: #44546f;
+  --card-shadow: 0px 1px 1px #091e4240;
+  --card-radius: 8px;
+  --list-radius: 12px;
+}
+
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--board-bg);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden; /* Importante para que el scroll sea interno del tablero */
 }
 
 * {
