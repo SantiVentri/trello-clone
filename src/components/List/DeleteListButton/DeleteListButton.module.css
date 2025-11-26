@@ -1,0 +1,16 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (hover: hover) {
+    .button:hover {
+        background-color: rgba(255, 0, 0, 0.1);
+    }    
+}

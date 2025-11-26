@@ -27,6 +27,13 @@ export default function Home() {
     setData({ ...data, lists: newLists });
   };
 
+  const onDeleteList = (listId: Id) => {
+    if (window.confirm("¿Estás seguro de que quieres eliminar esta lista?")) {
+      const newLists = data.lists.filter(list => list.id !== listId);
+      setData({ ...data, lists: newLists });
+    }
+  }
+
   if (!mounted) {
     return null;
   }
@@ -34,7 +41,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Board data={data} onToggleCard={onToggleCard} />
+        <Board data={data} onToggleCard={onToggleCard} onDeleteList={onDeleteList} />
       </main>
     </div>
   );

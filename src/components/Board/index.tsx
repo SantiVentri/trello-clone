@@ -11,13 +11,14 @@ import { BoardData, Id } from "@/types";
 interface BoardProps {
     data: BoardData;
     onToggleCard: (cardId: Id) => void;
+    onDeleteList?: (listId: Id) => void;
 }
 
-export default function Board({ data, onToggleCard }: BoardProps) {
+export default function Board({ data, onToggleCard, onDeleteList }: BoardProps) {
     return (
         <div className={styles.container}>
             {data.lists.map((list) => (
-                <BoardList key={list.id} list={list} onToggleCard={onToggleCard} />
+                <BoardList key={list.id} list={list} onToggleCard={onToggleCard} onDeleteList={onDeleteList} />
             ))}
         </div>
     );

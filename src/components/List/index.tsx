@@ -6,12 +6,16 @@ import { List, Id } from "@/types"
 
 // Components
 import ListCard from "../Card";
+import DeleteListButton from "./DeleteListButton/delete-list-button";
 
-export default function BoardList({ list, onToggleCard }: { list: List; onToggleCard: (cardId: Id) => void }) {
+export default function BoardList({ list, onToggleCard, onDeleteList }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void }) {
     return (
         <div>
             <div className={styles.list}>
-                <h3 className={styles.listTitle}>{list.title}</h3>
+                <div className={styles.titles}>
+                    <h3 className={styles.listTitle}>{list.title}</h3>
+                    {onDeleteList && <DeleteListButton listId={list.id} onDelete={onDeleteList} />}
+                </div>
                 <div className={styles.cards}>
                     {list.cards.map((card) => (
                         <ListCard key={card.id} card={card} onToggleCard={onToggleCard} />
