@@ -1,14 +1,15 @@
 .nav {
-  height: 48px;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  flex-shrink: 0;
+    position: relative;
+    height: 48px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
 }
 
 .nav h1 {
@@ -16,21 +17,98 @@
   font-size: 1.1rem;
 }
 
-.nav a {
+.nav .settings {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 32px;
+    min-width: 32px;
+    cursor: pointer;
 }
 
-.nav .github {
-    display: none;
-}
-
-@media (max-width: 1000px) {
-  .nav .github {
+.modal {
+    position: absolute;
+    top: 18px;
+    right: 20px;
     display: flex;
-  }
-  .nav .link {
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    width: 400px;
+    z-index: 100;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    height: 48px;
+}
+
+.modal h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: gray;
+}
+
+.modalHeader button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.modalContent button {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+    gap: 10px;
+}
+
+/* Open/Closed styles */
+.open {
+    display: flex;
+}
+
+.closed {
     display: none;
-  }
+}
+
+@media (hover: hover) {
+    .nav button:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .modalHeader button:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .modalContent button:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 }
