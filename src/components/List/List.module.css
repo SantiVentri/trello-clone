@@ -35,6 +35,33 @@
     gap: 5px;
 }
 
+.listTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #172b4d;
+    margin: 0;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.listTitle:hover {
+    background-color: #091e4214;
+}
+
+.listTitleInput {
+    font-size: 16px;
+    font-weight: 600;
+    color: #172b4d;
+    margin: 0;
+    padding: 4px 8px;
+    border: 2px solid #0079bf;
+    border-radius: 3px;
+    width: 100%;
+    outline: none;
+    background-color: white;
+}
+
 @media (hover: hover) {
     .addCardButton:hover {
         background-color: rgba(0, 0, 0, 0.06);

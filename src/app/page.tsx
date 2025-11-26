@@ -34,6 +34,27 @@ export default function Home() {
     }
   }
 
+  const onUpdateListTitle = (listId: Id, newTitle: string) => {
+    const newLists = data.lists.map(list => 
+      list.id === listId ? { ...list, title: newTitle } : list
+    );
+    setData({ ...data, lists: newLists });
+  }
+
+  const onAddList = () => {
+    if (data.lists.length >= 6) {
+      alert("No puedes agregar más de 6 listas.");
+      return;
+    }
+
+    const newList = {
+      id: Date.now().toString(),
+      title: "New List",
+      cards: []
+    };
+    setData({ ...data, lists: [...data.lists, newList] });
+  };
+
   if (!mounted) {
     return null;
   }
@@ -41,7 +62,13 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Board data={data} onToggleCard={onToggleCard} onDeleteList={onDeleteList} />
+        <Board 
+          data={data} 
+          onToggleCard={onToggleCard} 
+          onDeleteList={onDeleteList} 
+          onAddList={onAddList}
+          onUpdateListTitle={onUpdateListTitle}
+        />
       </main>
     </div>
   );
