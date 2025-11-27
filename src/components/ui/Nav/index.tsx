@@ -157,7 +157,7 @@ export default function Nav() {
                         ) : (
                             <ImageIcon color="black" size={16} />
                         )}
-                        <p>Change background (In development)</p>
+                        <p>Change background</p>
                     </button>
                     <button onClick={handleCloseBoard} style={{ color: "red" }}>
                         <Trash2 size={16} />
