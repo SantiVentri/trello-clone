@@ -51,6 +51,19 @@ export default function Home() {
     setData({ ...data, lists: newLists });
   };
 
+  const onAddCard = (listId: Id, title: string) => {
+    const newCard = {
+      id: Date.now().toString(),
+      title: title,
+      checked: false
+    };
+
+    const newLists = data.lists.map(list =>
+      list.id === listId ? { ...list, cards: [...list.cards, newCard] } : list
+    );
+    setData({ ...data, lists: newLists });
+  };
+
   const onAddList = () => {
     if (data.lists.length >= 6) {
       alert("No puedes agregar más de 6 listas.");
@@ -79,6 +92,7 @@ export default function Home() {
           onAddList={onAddList}
           onUpdateListTitle={onUpdateListTitle}
           onUpdateCardTitle={onUpdateCardTitle}
+          onAddCard={onAddCard}
         />
       </main>
     </div>

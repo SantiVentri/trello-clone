@@ -62,8 +62,63 @@
     background-color: white;
 }
 
+.addCardForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.addCardInput {
+    background-color: white;
+    border-radius: 10px;
+    padding: 12px 10px;
+    border: none;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+    font-family: inherit;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    width: 100%;
+    min-height: 50px;
+}
+
+.addCardActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.saveCardButton {
+    background-color: #0480f4;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancelCardButton {
+    background-color: transparent;
+    border: none;
+    color: #172b4d;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.cancelCardButton:hover {
+    color: #091e42;
+}
+
 @media (hover: hover) {
     .addCardButton:hover {
         background-color: rgba(0, 0, 0, 0.06);
+    }
+    .saveCardButton:hover {
+        background-color: #0265c2;
     }
 }

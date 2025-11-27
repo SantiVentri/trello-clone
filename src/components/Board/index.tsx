@@ -16,9 +16,10 @@ interface BoardProps {
     onAddList?: () => void;
     onUpdateListTitle?: (listId: Id, newTitle: string) => void;
     onUpdateCardTitle?: (cardId: Id, newTitle: string) => void;
+    onAddCard?: (listId: Id, title: string) => void;
 }
 
-export default function Board({ data, onToggleCard, onDeleteList, onAddList, onUpdateListTitle, onUpdateCardTitle }: BoardProps) {
+export default function Board({ data, onToggleCard, onDeleteList, onAddList, onUpdateListTitle, onUpdateCardTitle, onAddCard }: BoardProps) {
     return (
         <div className={styles.container}>
             {data.lists.map((list) => (
@@ -29,6 +30,7 @@ export default function Board({ data, onToggleCard, onDeleteList, onAddList, onU
                     onDeleteList={onDeleteList}
                     onUpdateListTitle={onUpdateListTitle}
                     onUpdateCardTitle={onUpdateCardTitle}
+                    onAddCard={onAddCard}
                 />
             ))}
             <button className={styles.addListButton} onClick={onAddList}>
