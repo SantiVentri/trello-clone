@@ -53,7 +53,7 @@ export default function Home() {
 
   const onAddCard = (listId: Id, title: string) => {
     const newCard = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       title: title,
       checked: false
     };
@@ -71,7 +71,7 @@ export default function Home() {
     }
 
     const newList = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       title: "New List",
       cards: []
     };
