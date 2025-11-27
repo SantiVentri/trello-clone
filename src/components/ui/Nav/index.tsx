@@ -8,21 +8,22 @@ import styles from "./Nav.module.css";
 import { useState, useRef, useEffect } from "react";
 
 // Hooks
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useBoard } from "@/context/BoardContext";
 
 // Data
-import { initialData } from "@/data/initialData";
+import { initialData, defaultBackgroundImages } from "@/data/initialData";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Nav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [data, setData] = useLocalStorage("trello-board", initialData);
+    const { data, setData } = useBoard();
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(data.title);
     const inputRef = useRef<HTMLInputElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const [showBGOptions, setShowBGOptions] = useState(false);
 
     useEffect(() => {
         setTitle(data.title);
@@ -102,7 +103,7 @@ export default function Nav() {
                 )}
             </div>
             <nav>
-                <button ref={buttonRef} className={styles.settings} onClick={() => setIsMenuOpen(true)}>
+                <button ref={buttonRef} className={styles.settings} onClick={() => { setIsMenuOpen(!isMenuOpen), setShowBGOptions(false) }}>
                     <Ellipsis color="white" />
                 </button>
             </nav>
@@ -123,7 +124,28 @@ export default function Nav() {
                         />
                         <p>See repository</p>
                     </Link>
-                    <button>
+                    {showBGOptions && (
+                        <div className={styles.bgOptions}>
+                            {defaultBackgroundImages.map((bgImage, index) => (
+                                <button
+                                    key={index}
+                                    className={styles.bgOption}
+                                    style={{
+                                        border: data.backgroundImage === bgImage ? "3px solid var(--board-bg)" : "none"
+                                    }}
+                                    onClick={() => setData({ ...data, backgroundImage: bgImage })}
+                                >
+                                    <Image
+                                        src={bgImage}
+                                        alt={`Background ${index + 1}`}
+                                        fill
+                                        sizes="150px"
+                                    />
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                    <button onClick={() => setShowBGOptions(!showBGOptions)}>
                         {data.backgroundImage ? (
                             <Image
                                 className={styles.bgIcon}
