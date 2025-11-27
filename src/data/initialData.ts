@@ -12,22 +12,36 @@ export const initialData: BoardData = {
     backgroundImage: defaultBackgroundImages[0],
     lists: [
         {
-        id: "1",
-        title: "To Do",
-        cards: [
-            { id: "1", title: "Project setup", checked: false},
-            { id: "2", title: "Board implementation", checked: false },
-        ],
+            id: "list-1",
+            title: "To Do",
+            cards: [
+                {
+                    id: "card-1",
+                    title: "Project setup",
+                    checked: false
+                },
+                {
+                    id: "card-2",
+                    title: "Board implementation",
+                    checked: false
+                },
+            ],
         },
         {
-        id: "2",
-        title: "In Progress",
-        cards: [{ id: "3", title: "Card component", checked: false }],
+            id: "list-2",
+            title: "In Progress",
+            cards: [
+                {
+                    id: "card-3",
+                    title: "Card component",
+                    checked: false
+                }
+            ],
         },
         {
-        id: "3",
-        title: "Done",
-        cards: [],
+            id: "list-3",
+            title: "Done",
+            cards: [],
         },
     ],
 };
