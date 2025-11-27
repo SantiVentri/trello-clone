@@ -4,7 +4,7 @@
 import styles from "./page.module.css";
 
 // Hooks
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useBoard } from "@/context/BoardContext";
 
 // Components
 import Board from "@/components/Board";
@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { Id } from "@/types";
 
 export default function Home() {
-  const [data, setData, mounted] = useLocalStorage("trello-board", initialData);
+  const { data, setData, mounted } = useBoard();
 
   const onToggleCard = (cardId: Id) => {
     const newLists = data.lists.map(list => ({
