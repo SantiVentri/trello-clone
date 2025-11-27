@@ -5,21 +5,14 @@ import styles from "./Board.module.css";
 import BoardList from "../List";
 
 // Types
-import { BoardData, Id } from "@/types";
 import { Plus } from "lucide-react";
 
-// Props interface
-interface BoardProps {
-    data: BoardData;
-    onToggleCard: (cardId: Id) => void;
-    onDeleteList?: (listId: Id) => void;
-    onAddList?: () => void;
-    onUpdateListTitle?: (listId: Id, newTitle: string) => void;
-    onUpdateCardTitle?: (cardId: Id, newTitle: string) => void;
-    onAddCard?: (listId: Id, title: string) => void;
-}
+// Hooks
+import { useBoard } from "@/context/BoardContext";
 
-export default function Board({ data, onToggleCard, onDeleteList, onAddList, onUpdateListTitle, onUpdateCardTitle, onAddCard }: BoardProps) {
+export default function Board() {
+    const { data, onToggleCard, onDeleteList, onAddList, onUpdateListTitle, onUpdateCardTitle, onAddCard } = useBoard();
+
     return (
         <div className={styles.container}>
             {data.lists.map((list) => (
