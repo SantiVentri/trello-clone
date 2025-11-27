@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 // Components
 import Nav from "@/components/ui/Nav";
 import { BoardProvider } from "@/context/BoardContext";
+import BoardBackground from "@/components/BoardBackground";
 
 export const metadata: Metadata = {
   title: "Trello Clone | By Santino Ventrice",
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <BoardProvider>
+          <BoardBackground />
           <Nav />
           <main>
             {children}
