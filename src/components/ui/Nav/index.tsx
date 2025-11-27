@@ -21,6 +21,8 @@ export default function Nav() {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(data.title);
     const inputRef = useRef<HTMLInputElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         setTitle(data.title);
@@ -32,6 +34,25 @@ export default function Nav() {
             inputRef.current.select();
         }
     }, [isEditing]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                isMenuOpen &&
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target as Node)
+            ) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isMenuOpen]);
 
     const handleCloseBoard = () => {
         if (window.confirm("¿Estás seguro? Esto borrará todo y restaurará el tablero inicial.")) {
@@ -81,11 +102,11 @@ export default function Nav() {
                 )}
             </div>
             <nav>
-                <button className={styles.settings} onClick={() => setIsMenuOpen(true)}>
+                <button ref={buttonRef} className={styles.settings} onClick={() => setIsMenuOpen(true)}>
                     <Ellipsis color="white" />
                 </button>
             </nav>
-            <div className={`${styles.modal} ${isMenuOpen ? styles.open : styles.closed}`}>
+            <div ref={menuRef} className={`${styles.modal} ${isMenuOpen ? styles.open : styles.closed}`}>
                 <div className={styles.modalHeader}>
                     <h4>Menu</h4>
                     <button onClick={() => setIsMenuOpen(false)}>
