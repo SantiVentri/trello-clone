@@ -84,7 +84,7 @@
     padding: 10px;
 }
 
-.modalContent button {
+.modalContent button, .modalContent a {
     display: flex;
     align-items: flex-start;
     width: 100%;
@@ -94,6 +94,8 @@
     background-color: transparent;
     color: black;
     font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
     cursor: pointer;
     gap: 10px;
 }
@@ -105,18 +107,6 @@
 
 .closed {
     display: none;
-}
-
-@media (hover: hover) {
-    .nav button:hover {
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-    .modalHeader button:hover {
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-    .modalContent button:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
 }
 
 .boardTitleInput {
@@ -143,6 +133,17 @@
     cursor: pointer;
 }
 
-.boardTitle:hover {
-    background: rgba(255, 255, 255, 0.2);
+@media (hover:hover) {
+    .nav button:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .modalHeader button:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .modalContent button:hover, .modalContent a:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .boardTitle:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }    
 }
