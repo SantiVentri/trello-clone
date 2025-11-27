@@ -100,6 +100,12 @@
     gap: 10px;
 }
 
+.bgIcon {
+    border-radius: 5px;
+    border: 2px solid var(--board-bg);
+    object-fit: cover;
+}
+
 /* Open/Closed styles */
 .open {
     display: flex;

@@ -124,7 +124,17 @@ export default function Nav() {
                         <p>See repository</p>
                     </Link>
                     <button>
-                        <ImageIcon color="black" size={16} />
+                        {data.backgroundImage ? (
+                            <Image
+                                className={styles.bgIcon}
+                                src={data.backgroundImage || ""}
+                                height={24}
+                                width={24}
+                                alt="Small background image"
+                            />
+                        ) : (
+                            <ImageIcon color="black" size={16} />
+                        )}
                         <p>Change background (In development)</p>
                     </button>
                     <button onClick={handleCloseBoard} style={{ color: "red" }}>
