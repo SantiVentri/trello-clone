@@ -9,6 +9,8 @@ import ListCard from "../Card";
 import DeleteListButton from "./DeleteListButton/delete-list-button";
 import { Plus, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { useSortable, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle, onUpdateCardTitle, onAddCard }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void; onAddCard?: (listId: Id, title: string) => void }) {
     const [isEditing, setIsEditing] = useState(list.title === "New List");
@@ -18,6 +20,27 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
     const [isAddingCard, setIsAddingCard] = useState(false);
     const [newCardTitle, setNewCardTitle] = useState("");
     const newCardInputRef = useRef<HTMLTextAreaElement>(null);
+
+    const {
+        setNodeRef,
+        attributes,
+        listeners,
+        transform,
+        transition,
+        isDragging
+    } = useSortable({
+        id: list.id,
+        data: {
+            type: "Column",
+            list
+        }
+    });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.5 : 1,
+    };
 
     useEffect(() => {
         if (isEditing && inputRef.current) {
@@ -59,9 +82,9 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
     };
 
     return (
-        <div>
+        <div ref={setNodeRef} style={style} {...attributes}>
             <div className={styles.list}>
-                <div className={styles.titles}>
+                <div className={styles.titles} {...listeners}>
                     {isEditing ? (
                         <input
                             ref={inputRef}
@@ -82,9 +105,11 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
                     {onDeleteList && <DeleteListButton listId={list.id} onDelete={onDeleteList} />}
                 </div>
                 <div className={styles.cards}>
-                    {list.cards.map((card) => (
-                        <ListCard key={card.id} card={card} onToggleCard={onToggleCard} onUpdateCardTitle={onUpdateCardTitle} />
-                    ))}
+                    <SortableContext items={list.cards.map(c => c.id)} strategy={verticalListSortingStrategy}>
+                        {list.cards.map((card) => (
+                            <ListCard key={card.id} card={card} onToggleCard={onToggleCard} onUpdateCardTitle={onUpdateCardTitle} />
+                        ))}
+                    </SortableContext>
                 </div>
                 {isAddingCard ? (
                     <div className={styles.addCardForm}>

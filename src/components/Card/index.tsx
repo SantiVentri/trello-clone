@@ -6,11 +6,34 @@ import styles from "./Card.module.css";
 
 // Types
 import { Card, Id } from "@/types"
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 export default function ListCard({ card, onToggleCard, onUpdateCardTitle }: { card: Card; onToggleCard: (cardId: Id) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void }) {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(card.title);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const {
+        setNodeRef,
+        attributes,
+        listeners,
+        transform,
+        transition,
+        isDragging
+    } = useSortable({
+        id: card.id,
+        data: {
+            type: "Card",
+            card
+        }
+    });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.5 : 1,
+    };
 
     useEffect(() => {
         if (isEditing && inputRef.current) {
@@ -41,8 +64,25 @@ export default function ListCard({ card, onToggleCard, onUpdateCardTitle }: { ca
         }
     };
 
+    if (isDragging) {
+        return (
+            <div
+                ref={setNodeRef}
+                style={style}
+                className={styles.card}
+            />
+        );
+    }
+
     return (
-        <div className={styles.card} onContextMenu={handleContextMenu}>
+        <div
+            ref={setNodeRef}
+            style={style}
+            {...attributes}
+            {...listeners}
+            className={styles.card}
+            onContextMenu={handleContextMenu}
+        >
             <input
                 type="checkbox"
                 checked={card.checked}
@@ -59,7 +99,7 @@ export default function ListCard({ card, onToggleCard, onUpdateCardTitle }: { ca
                     onClick={(e) => e.stopPropagation()}
                 />
             ) : (
-                <p className={styles.cardTitle}>
+                <p className={styles.cardTitle} onClick={() => setIsEditing(true)}>
                     {card.title}
                 </p>
             )}
