@@ -16,5 +16,6 @@ export type List = {
 
 export type BoardData = {
   title: string;
+  backgroundImage?: string;
   lists: List[];
 };
