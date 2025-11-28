@@ -4,6 +4,7 @@ import styles from "./Board.module.css";
 // Components & Icons
 import BoardList from "../List";
 import ListCard from "../Card";
+import Details from "../Details";
 import { Plus } from "lucide-react";
 
 // Types
@@ -36,6 +37,7 @@ export default function Board() {
     // Estados para rastrear el elemento que se está arrastrando actualmente (columna o tarjeta)
     const [activeColumn, setActiveColumn] = useState<List | null>(null);
     const [activeCard, setActiveCard] = useState<Card | null>(null);
+    const [detailsCard, setDetailsCard] = useState<Card | null>(null);
 
     // Configuración de sensores para detectar el arrastre (requiere mover 10px para activar)
     const sensors = useSensors(
@@ -147,6 +149,7 @@ export default function Board() {
                             onUpdateListTitle={onUpdateListTitle}
                             onUpdateCardTitle={onUpdateCardTitle}
                             onAddCard={onAddCard}
+                            onOpenDetails={setDetailsCard}
                         />
                     ))}
                 </SortableContext>
@@ -155,6 +158,13 @@ export default function Board() {
                     <p>Add another list</p>
                 </button>
             </div>
+            {detailsCard && (
+                <Details
+                    {...detailsCard}
+                    isDetailsOpen={!!detailsCard}
+                    onClose={() => setDetailsCard(null)}
+                />
+            )}
             {createPortal(
                 <DragOverlay>
                     {activeColumn && (

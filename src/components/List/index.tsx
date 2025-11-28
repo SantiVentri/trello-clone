@@ -2,7 +2,7 @@
 import styles from "./List.module.css";
 
 // Types
-import { List, Id } from "@/types"
+import { List, Id, Card } from "@/types"
 
 // Components
 import ListCard from "../Card";
@@ -12,7 +12,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSortable, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle, onUpdateCardTitle, onAddCard }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void; onAddCard?: (listId: Id, title: string) => void }) {
+export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle, onUpdateCardTitle, onAddCard, onOpenDetails }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void; onAddCard?: (listId: Id, title: string) => void; onOpenDetails?: (card: Card) => void }) {
     const [isEditing, setIsEditing] = useState(list.title === "New List");
     const [title, setTitle] = useState(list.title);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -107,7 +107,7 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
                 <div className={styles.cards}>
                     <SortableContext items={list.cards.map(c => c.id)} strategy={verticalListSortingStrategy}>
                         {list.cards.map((card) => (
-                            <ListCard key={card.id} card={card} onToggleCard={onToggleCard} onUpdateCardTitle={onUpdateCardTitle} />
+                            <ListCard key={card.id} card={card} onToggleCard={onToggleCard} onUpdateCardTitle={onUpdateCardTitle} onOpenDetails={onOpenDetails} />
                         ))}
                     </SortableContext>
                 </div>

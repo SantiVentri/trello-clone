@@ -6,6 +6,8 @@ export type Card = {
   id: Id;
   title: string;
   checked: boolean;
+  isDetailsOpen?: boolean;
+  onClose?: () => void;
 };
 
 export type List = {

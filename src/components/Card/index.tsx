@@ -9,7 +9,7 @@ import { Card, Id } from "@/types"
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function ListCard({ card, onToggleCard, onUpdateCardTitle }: { card: Card; onToggleCard: (cardId: Id) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void }) {
+export default function ListCard({ card, onToggleCard, onUpdateCardTitle, onOpenDetails }: { card: Card; onToggleCard: (cardId: Id) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void; onOpenDetails?: (card: Card) => void }) {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(card.title);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -64,6 +64,12 @@ export default function ListCard({ card, onToggleCard, onUpdateCardTitle }: { ca
         }
     };
 
+    const handleOpenDetails = () => {
+        if (onOpenDetails) {
+            onOpenDetails(card);
+        }
+    };
+
     if (isDragging) {
         return (
             <div
@@ -82,6 +88,7 @@ export default function ListCard({ card, onToggleCard, onUpdateCardTitle }: { ca
             {...listeners}
             className={styles.card}
             onContextMenu={handleContextMenu}
+            onClick={handleOpenDetails}
         >
             <input
                 type="checkbox"
