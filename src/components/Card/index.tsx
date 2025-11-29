@@ -94,6 +94,7 @@ export default function ListCard({ card, onToggleCard, onUpdateCardTitle, onOpen
                 type="checkbox"
                 checked={card.checked}
                 onChange={() => onToggleCard(card.id)}
+                onClick={(e) => e.stopPropagation()}
             />
             {isEditing ? (
                 <input
