@@ -1,6 +1,8 @@
 // Styles
 import { Ellipsis, Text, Trash2, X } from "lucide-react";
 import styles from "./Details.module.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 // Types
 import { Card } from "@/types";
@@ -54,6 +56,13 @@ export default function Details({
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
         }
     }, [desc, isEditingDesc]);
+
+    useEffect(() => {
+        if (isEditingDesc && textareaRef.current) {
+            textareaRef.current.focus();
+            textareaRef.current.setSelectionRange(textareaRef.current.value.length, textareaRef.current.value.length);
+        }
+    }, [isEditingDesc]);
 
     useEffect(() => {
         setCardTitle(currentTitle || "");
@@ -176,24 +185,38 @@ export default function Details({
                         <h4>Description</h4>
                         <div />
                         <div className={styles.descContainer}>
-                            <textarea
-                                ref={textareaRef}
-                                placeholder="Add a more detailed description..."
-                                value={desc}
-                                onChange={(e) => setDescription(e.target.value)}
-                                onFocus={() => setIsEditingDesc(true)}
-                                onKeyDown={handleDescKeyDown}
-                                onBlur={handleDescBlur}
-                                maxLength={1200}
-                                rows={1}
-                            />
-                            {isEditingDesc && (
-                                <div className={styles.descButtons}>
-                                    <button className={styles.saveButton} onClick={handleDescSave}>Save</button>
-                                    <button ref={cancelButtonRef} className={styles.cancelButton} onClick={handleDescCancel}>
-                                        <X size={20} />
-                                        <span style={{ marginLeft: 4, fontSize: 14 }}>Cancel</span>
-                                    </button>
+                            {isEditingDesc ? (
+                                <>
+                                    <textarea
+                                        ref={textareaRef}
+                                        placeholder="Add a more detailed description..."
+                                        value={desc}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                        onKeyDown={handleDescKeyDown}
+                                        onBlur={handleDescBlur}
+                                        maxLength={1200}
+                                        rows={1}
+                                    />
+                                    <div className={styles.descButtons}>
+                                        <button className={styles.saveButton} onClick={handleDescSave}>Save</button>
+                                        <button ref={cancelButtonRef} className={styles.cancelButton} onClick={handleDescCancel}>
+                                            <X size={20} />
+                                            <span style={{ marginLeft: 4, fontSize: 14 }}>Cancel</span>
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <div
+                                    className={styles.markdownPreview}
+                                    onClick={() => setIsEditingDesc(true)}
+                                >
+                                    {desc ? (
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                            {desc}
+                                        </ReactMarkdown>
+                                    ) : (
+                                        <p className={styles.placeholder}>Add a more detailed description...</p>
+                                    )}
                                 </div>
                             )}
                         </div>

@@ -189,3 +189,29 @@
     margin-bottom: 10px;
     gap: 10px;
 }
+
+.markdownPreview {
+    min-height: 60px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.markdownPreview:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+}
+
+.placeholder {
+    font-weight: 600;
+    color: #0000007d;
+    margin: 0;
+}
+
+.markdownPreview a {
+    color: #0c66e4;
+    text-decoration: underline;
+}
+
+.markdownPreview a:hover {
+    color: #0055cc;
+}
