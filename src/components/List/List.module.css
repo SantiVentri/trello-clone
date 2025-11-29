@@ -116,9 +116,6 @@
     padding: 4px;
 }
 
-.cancelCardButton:hover {
-    color: #091e42;
-}
 
 @media (hover: hover) {
     .addCardButton:hover {
@@ -126,5 +123,8 @@
     }
     .saveCardButton:hover {
         background-color: #0265c2;
+    }
+    .cancelCardButton:hover {
+        color: #091e42;
     }
 }
