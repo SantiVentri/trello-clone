@@ -18,7 +18,7 @@ export const initialData: BoardData = {
                 {
                     id: "b7762788-7036-4e59-bf68-8c0d7a9e93da",
                     title: "Welcome to my Trello Clone!",
-                    description: "This is a simple Trello-like application built with React and TypeScript.\n\nAdd new cards, edit titles, and drag and drop items to organize your tasks.",
+                    description: "### Hello there! \nThis is a simple Trello-like application built with Next.js and CSS Modules.\nAdd new cards, edit titles and description, and drag and drop items to organize your tasks.\nCheck out other projects on my GitHub! [santiventri](https://github.com/santiventri)",
                     checked: false
                 },
             ]
