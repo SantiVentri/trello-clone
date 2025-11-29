@@ -8,8 +8,10 @@ import styles from "./Card.module.css";
 import { Card, Id } from "@/types"
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { useBoard } from "@/context/BoardContext";
 
-export default function ListCard({ card, onToggleCard, onUpdateCardTitle, onOpenDetails }: { card: Card; onToggleCard: (cardId: Id) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void; onOpenDetails?: (card: Card) => void }) {
+export default function ListCard({ card, onOpenDetails }: { card: Card; onOpenDetails?: (card: Card) => void }) {
+    const { onToggleCard, onUpdateCardTitle } = useBoard();
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(card.title);
     const inputRef = useRef<HTMLInputElement>(null);

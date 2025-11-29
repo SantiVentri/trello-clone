@@ -11,8 +11,10 @@ import { Plus, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useSortable, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { useBoard } from "@/context/BoardContext";
 
-export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateListTitle, onUpdateCardTitle, onAddCard, onOpenDetails }: { list: List; onToggleCard: (cardId: Id) => void; onDeleteList?: (listId: Id) => void; onUpdateListTitle?: (listId: Id, newTitle: string) => void; onUpdateCardTitle?: (cardId: Id, newTitle: string) => void; onAddCard?: (listId: Id, title: string) => void; onOpenDetails?: (card: Card) => void }) {
+export default function BoardList({ list, onOpenDetails }: { list: List; onOpenDetails?: (card: Card) => void }) {
+    const { onDeleteList, onUpdateListTitle, onAddCard } = useBoard();
     const [isEditing, setIsEditing] = useState(list.title === "New List");
     const [title, setTitle] = useState(list.title);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -107,7 +109,7 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
                 <div className={styles.cards}>
                     <SortableContext items={list.cards.map(c => c.id)} strategy={verticalListSortingStrategy}>
                         {list.cards.map((card) => (
-                            <ListCard key={card.id} card={card} onToggleCard={onToggleCard} onUpdateCardTitle={onUpdateCardTitle} onOpenDetails={onOpenDetails} />
+                            <ListCard key={card.id} card={card} onOpenDetails={onOpenDetails} />
                         ))}
                     </SortableContext>
                 </div>
@@ -137,12 +139,10 @@ export default function BoardList({ list, onToggleCard, onDeleteList, onUpdateLi
                         </div>
                     </div>
                 ) : (
-                    onAddCard && (
-                        <button className={styles.addCardButton} onClick={() => setIsAddingCard(true)}>
-                            <Plus size={16} />
-                            <p>Add another card</p>
-                        </button>
-                    )
+                    <button className={styles.addCardButton} onClick={() => setIsAddingCard(true)}>
+                        <Plus size={16} />
+                        <p>Add another card</p>
+                    </button>
                 )}
             </div>
         </div>

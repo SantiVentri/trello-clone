@@ -32,7 +32,7 @@ import { SortableContext, horizontalListSortingStrategy } from "@dnd-kit/sortabl
 // Componente principal del tablero
 export default function Board() {
     // Obtención de datos y funciones del contexto global del tablero
-    const { data, onToggleCard, onDeleteList, onAddList, onUpdateListTitle, onUpdateCardTitle, onAddCard, onReorderLists, onMoveCard } = useBoard();
+    const { data, onAddList, onReorderLists, onMoveCard } = useBoard();
 
     // Estados para rastrear el elemento que se está arrastrando actualmente (columna o tarjeta)
     const [activeColumn, setActiveColumn] = useState<List | null>(null);
@@ -144,11 +144,6 @@ export default function Board() {
                         <BoardList
                             key={list.id}
                             list={list}
-                            onToggleCard={onToggleCard}
-                            onDeleteList={onDeleteList}
-                            onUpdateListTitle={onUpdateListTitle}
-                            onUpdateCardTitle={onUpdateCardTitle}
-                            onAddCard={onAddCard}
                             onOpenDetails={setDetailsCard}
                         />
                     ))}
@@ -170,13 +165,11 @@ export default function Board() {
                     {activeColumn && (
                         <BoardList
                             list={activeColumn}
-                            onToggleCard={onToggleCard}
                         />
                     )}
                     {activeCard && (
                         <ListCard
                             card={activeCard}
-                            onToggleCard={onToggleCard}
                         />
                     )}
                 </DragOverlay>,
