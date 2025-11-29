@@ -1,5 +1,5 @@
 // Styles
-import { Ellipsis, Text, X } from "lucide-react";
+import { Ellipsis, Text, Trash2, X } from "lucide-react";
 import styles from "./Details.module.css";
 
 // Types
@@ -19,7 +19,8 @@ export default function Details({
         data,
         onUpdateCardTitle,
         onUpdateCardDesc,
-        onToggleCard
+        onToggleCard,
+        onDeleteCard
     } = useBoard();
 
     const card = data.lists.flatMap(l => l.cards).find(c => c.id === id);
@@ -123,6 +124,11 @@ export default function Details({
         isMouseDownOnOverlay.current = false;
     };
 
+    const handleDeleteCard = () => {
+        onDeleteCard(id);
+        onClose?.();
+    };
+
 
     if (!isDetailsOpen) return null;
 
@@ -134,8 +140,8 @@ export default function Details({
         >
             <div className={styles.details} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.bg}>
-                    <button onClick={() => { }}>
-                        <Ellipsis size={20} />
+                    <button className={styles.deleteCardButton} onClick={handleDeleteCard}>
+                        <Trash2 size={20} color="red" />
                     </button>
                     <button onClick={onClose}>
                         <X size={20} />

@@ -11,6 +11,7 @@ interface BoardContextType {
     mounted: boolean;
     onToggleCard: (cardId: Id) => void;
     onDeleteList: (listId: Id) => void;
+    onDeleteCard: (cardId: Id) => void;
     onUpdateListTitle: (listId: Id, newTitle: string) => void;
     onUpdateCardTitle: (cardId: Id, newTitle: string) => void;
     onUpdateCardDesc: (cardId: Id, newDesc: string) => void;
@@ -42,8 +43,18 @@ export function BoardProvider({ children }: { children: ReactNode }) {
     };
 
     const onDeleteList = (listId: Id) => {
-        if (window.confirm("¿Estás seguro de que quieres eliminar esta lista?")) {
+        if (window.confirm("Are you sure you want to delete this list?")) {
             const newLists = data.lists.filter(list => list.id !== listId);
+            setData({ ...data, lists: newLists });
+        }
+    }
+
+    const onDeleteCard = (cardId: Id) => {
+        if (window.confirm("Are you sure you want to delete this card?")) {
+            const newLists = data.lists.map(list => ({
+                ...list,
+                cards: list.cards.filter(card => card.id !== cardId)
+            }));
             setData({ ...data, lists: newLists });
         }
     }
@@ -90,7 +101,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
 
     const onAddList = () => {
         if (data.lists.length >= 6) {
-            alert("No puedes agregar más de 6 listas.");
+            alert("You can only have up to 6 lists on the board.");
             return;
         }
 
@@ -156,6 +167,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
             mounted,
             onToggleCard,
             onDeleteList,
+            onDeleteCard,
             onUpdateListTitle,
             onUpdateCardTitle,
             onUpdateCardDesc,
