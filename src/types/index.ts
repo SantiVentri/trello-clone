@@ -5,6 +5,7 @@ export type Id = string | number;
 export type Card = {
   id: Id;
   title: string;
+  description?: string;
   checked: boolean;
   isDetailsOpen?: boolean;
   onClose?: () => void;

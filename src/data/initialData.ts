@@ -12,36 +12,16 @@ export const initialData: BoardData = {
     backgroundImage: defaultBackgroundImages[0],
     lists: [
         {
-            id: "list-1",
-            title: "To Do",
+            id: 1,
+            title: "Introduction",
             cards: [
                 {
-                    id: "card-1",
-                    title: "Project setup",
+                    id: "b7762788-7036-4e59-bf68-8c0d7a9e93da",
+                    title: "Welcome to my Trello Clone!",
+                    description: "This is a simple Trello-like application built with React and TypeScript.\n\nAdd new cards, edit titles, and drag and drop items to organize your tasks.",
                     checked: false
                 },
-                {
-                    id: "card-2",
-                    title: "Board implementation",
-                    checked: false
-                },
-            ],
-        },
-        {
-            id: "list-2",
-            title: "In Progress",
-            cards: [
-                {
-                    id: "card-3",
-                    title: "Card component",
-                    checked: false
-                }
-            ],
-        },
-        {
-            id: "list-3",
-            title: "Done",
-            cards: [],
-        },
+            ]
+        }
     ],
 };
