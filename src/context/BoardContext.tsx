@@ -13,6 +13,7 @@ interface BoardContextType {
     onDeleteList: (listId: Id) => void;
     onUpdateListTitle: (listId: Id, newTitle: string) => void;
     onUpdateCardTitle: (cardId: Id, newTitle: string) => void;
+    onUpdateCardDesc: (cardId: Id, newDesc: string) => void;
     onAddCard: (listId: Id, title: string) => void;
     onAddList: () => void;
     onReorderLists: (activeId: Id, overId: Id) => void;
@@ -59,6 +60,16 @@ export function BoardProvider({ children }: { children: ReactNode }) {
             ...list,
             cards: list.cards.map(card =>
                 card.id === cardId ? { ...card, title: newTitle } : card
+            )
+        }));
+        setData({ ...data, lists: newLists });
+    };
+
+    const onUpdateCardDesc = (cardId: Id, newDesc: string) => {
+        const newLists = data.lists.map(list => ({
+            ...list,
+            cards: list.cards.map(card =>
+                card.id === cardId ? { ...card, description: newDesc } : card
             )
         }));
         setData({ ...data, lists: newLists });
@@ -147,6 +158,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
             onDeleteList,
             onUpdateListTitle,
             onUpdateCardTitle,
+            onUpdateCardDesc,
             onAddCard,
             onAddList,
             onReorderLists,

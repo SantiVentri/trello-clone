@@ -13,9 +13,175 @@
 
 .details {
     background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    width: 400px;
+    border-radius: 10px;
+    height: 90%;
+    width: 600px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background-color: var(--board-bg);
+    padding: 10px;
+    height: 100px;
+    gap: 10px;
+}
+
+.bg button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #0000007d;
+    border: none;
+    border-radius: 100px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+@media (hover: hover) {
+    .bg button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.header input[type="checkbox"] {
+    accent-color: green;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.cardTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.header input[type="checkbox"]:checked + .cardTitle {
+    text-decoration: line-through;
+    color: #a0a0a0;
+}
+
+.cardTitleInput {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px;
+    outline: 3px solid var(--board-bg);
+    outline-offset: -2px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    background-color: transparent;
+    font-family: inherit;
+}
+
+.content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: 20px 1fr; /* 20% izquierda, resto derecha */
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20px;
+    column-gap: 5px;
+}
+
+.description h4 {
+    flex-shrink: 0;
+}
+
+.description textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    max-height: 400px;
+    font-family: inherit;
+    overflow-y: hidden;
+}
+
+.description textarea:focus {
+    outline: 2px solid #0c66e4;
+    border-color: transparent;
+}
+
+.description textarea::placeholder {
+    font-weight: 600;
+}
+
+.descContainer {
+    width: 100%;
+}
+
+.descButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.saveButton {
+    background-color: #0480f4;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.cancelButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #172b4d;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+@media (hover: hover) {
+    .saveCardButton:hover {
+        background-color: #0265c2;
+    }
+    .cancelCardButton:hover {
+        color: #091e42;
+    }
+}
+
+.descLabel {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    gap: 10px;
 }
