@@ -10,6 +10,7 @@
     color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
+    z-index: 10;
 }
 
 .nav .titles {
@@ -176,4 +177,12 @@
     .boardTitle:hover {
         background: rgba(255, 255, 255, 0.2);
     }    
+}
+
+@media (max-width: 1000px) {
+    .modal {
+        width: 100%;
+        right: 0;
+        top: 48px;
+    }
 }

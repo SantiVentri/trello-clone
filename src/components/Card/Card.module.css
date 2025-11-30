@@ -74,3 +74,12 @@
     background-color: transparent;
     font-family: inherit;
 }
+
+@media (max-width: 1000px) {
+    .card input[type="checkbox"] {
+        opacity: 1;
+        width: 16px;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}

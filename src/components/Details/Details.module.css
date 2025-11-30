@@ -207,11 +207,10 @@
     margin: 0;
 }
 
-.markdownPreview a {
-    color: #0c66e4;
-    text-decoration: underline;
-}
-
-.markdownPreview a:hover {
-    color: #0055cc;
+@media (max-width: 1000px) {
+    .details {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
 }
