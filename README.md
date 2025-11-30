@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img width="75" height="75" alt="trello" src="https://github.com/user-attachments/assets/a9e20526-a82c-48a9-bd6b-708a938e9d3d" />
 
-## Getting Started
+# Trello Clone
 
-First, run the development server:
+Un clon funcional de Trello construido con **Next.js** y **TypeScript**. Esta aplicación permite la gestión de tareas a través de tableros, listas y tarjetas, con una experiencia de usuario fluida gracias a la implementación de drag-and-drop.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+El proyecto está diseñado para ser utilizado como una demo online y persiste los datos localmente en el navegador.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Tablero Principal
+<img src="https://github.com/user-attachments/assets/015ef5b3-e953-4f9e-a39e-f6fa79156098" width="800" alt="Vista principal del tablero" />
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Detalles de Tarjeta
+<img src="https://github.com/user-attachments/assets/eae6f75b-2a70-4fb9-ae3d-ebe5ee909757" width="800" alt="Detalle de tarjeta con descripción" />
 
-## Learn More
+### Vista Móvil
+<img src="https://github.com/user-attachments/assets/3a4bdab2-e97e-465a-b6a6-a01412498217" width="300" alt="Vista móvil" />
 
-To learn more about Next.js, take a look at the following resources:
+## Características
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Gestión de Tareas:** Crea, edita y elimina listas y tarjetas.
+* **Drag & Drop:** Funcionalidad de arrastrar y soltar para reordenar listas y mover tarjetas entre columnas utilizando `@dnd-kit`.
+* **Edición de Detalles:** Agrega descripciones detalladas a tus tarjetas con soporte para **Markdown**.
+* **Personalización:** Cambia el fondo del tablero seleccionando entre diferentes imágenes predefinidas.
+* **Persistencia de Datos:** Todo el estado del tablero se guarda automáticamente en `localStorage`.
+* **Diseño Responsivo:** Interfaz adaptada para funcionar tanto en escritorio como en dispositivos móviles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tecnologías Utilizadas
 
-## Deploy on Vercel
+* **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+* **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
+* **Estilos:** CSS Modules para un estilizado modular y eficiente.
+* **Drag & Drop:** [@dnd-kit/core](https://dndkit.com/) y `@dnd-kit/sortable`.
+* **Iconos:** [Lucide React](https://lucide.dev/).
+* **Markdown:** `react-markdown` para renderizar descripciones enriquecidas.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Santino Ventrice**
+- GitHub: [@SantiVentri](https://github.com/SantiVentri)
+- LinkedIn: [Santino Ventrice](https://linkedin.com/in/santinoventrice)
