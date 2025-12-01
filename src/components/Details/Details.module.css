@@ -207,6 +207,15 @@
     margin: 0;
 }
 
+.markdownPreview a {
+    color: #0052cc;
+    text-decoration: underline;
+}
+
+.markdownPreview a:hover {
+    color: #0065ff;
+}
+
 @media (max-width: 1000px) {
     .details {
         width: 100%;
