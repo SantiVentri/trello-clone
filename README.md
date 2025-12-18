@@ -1,6 +1,6 @@
 <img width="75" height="75" alt="trello" src="https://github.com/user-attachments/assets/a9e20526-a82c-48a9-bd6b-708a938e9d3d" />
 
-# Trello Clone
+# Trello Clone - v1.0.1
 
 Un clon funcional de Trello construido con **Next.js** y **TypeScript**. Esta aplicación permite la gestión de tareas a través de tableros, listas y tarjetas, con una experiencia de usuario fluida gracias a la implementación de drag-and-drop.
 
